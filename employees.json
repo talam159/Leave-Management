@@ -1,0 +1,32 @@
+[
+    {
+        "idNumber": "22029",
+        "name": "Md Tanvirul Alam",
+        "designation": "Network Admin",
+        "department":"RVL",
+        "concern": "RVL",
+        "employeeID": "RVL22029",
+        "sickLeaves": 14,
+        "casualLeaves": 15
+      },
+      {
+        "idNumber": "22028",
+        "name": "Arpita Panday",
+        "designation": "Registration Manager",
+        "department":"RVL",
+        "concern": "RVL",
+        "employeeID": "RVL22028",
+        "sickLeaves": 14,
+        "casualLeaves": 15
+      },
+      {
+        "idNumber": "22027",
+        "name": "Rafia Sarwar",
+        "designation": "Business Development Manager",
+        "department":"RVL",
+        "concern": "RVL",
+        "employeeID": "RVL22027",
+        "sickLeaves": 14,
+        "casualLeaves": 15
+      }
+]

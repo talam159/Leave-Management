@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leave Application Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+  <script src="load.js"></script>
+</head>
+<body>
+  <div class="container mx-auto mt-8">
+    <h2 class="text-2xl font-bold mb-4">Leave Application Form</h2>
+    <form class="max-w-md mx-auto">
+      <div class="mb-4">
+        <label for="id" type="number">RVL ID</label>
+        <input class="w-full border border-gray-300 px-3 py-2 rounded" type="text" id="idNumber" name="employeeId" >
+        <div class="mb-4">
+
+      </div>
+      <div class="mb-4">
+        <label class="block mb-2" for="date">Date:</label>
+        <input class="w-full border border-gray-300 px-3 py-2 rounded" type="date" id="date" name="date" required >
+      </div>
+      
+      <div class="mb-4">
+        <label class="block mb-2" for="name">Name:</label>
+        <input class="w-full border border-gray-300 px-3 py-2 rounded" type="text" id="fullName" name="name" required>
+      </div>
+      
+      <div class="mb-4">
+        <label class="block mb-2" for="designation">Designation:</label>
+        <input class="w-full border border-gray-300 px-3 py-2 rounded" type="text" id="designation" name="designation" required>
+      </div>
+      
+      <div class="mb-4">
+        <label class="block mb-2" for="department">Department:</label>
+        <input class="w-full border border-gray-300 px-3 py-2 rounded" type="text" id="department" name="department" required>
+      </div>
+      
+      <div class="mb-4">
+        <label class="block mb-2" for="concern">Concern:</label>
+        <input class="w-full border border-gray-300 px-3 py-2 rounded" id="concern" name="concern" rows="4" required></input>
+      </div>
+      
+      <div class="mb-4">
+        <label class="block mb-2" for="employeeId">Employee ID:</label>
+        <input class="w-full border border-gray-300 px-3 py-2 rounded" type="text" id="employeeID" name="employeeId" required>
+      </div>
+      
+      <div class="mb-4">
+        <label class="block mb-2">Leave Type:</label>
+        <div>
+          <input type="radio" id="sickLeave" name="leaveType" value="sick" onchange="toggleReasonMenu()" required>
+          <label for="sickLeave">Sick</label>
+
+          <input type="radio" id="casualLeave" name="leaveType" value="casual" onchange="toggleReasonMenu()" required>
+          <label class="mr-4" for="casualLeave">Casual</label>
+        </div>
+      </div>
+      
+      <div class="mb-4" id="reasonContainer" style="display:none" >
+        <label class="block mb-2" for="reason">Reason for Leave:</label>
+        <select class="w-full border border-gray-300 px-3 py-2 rounded" id="reason" name="reason" required>
+          <option value="" disabled selected>Select a reason</option>
+          <option value="personal">Personal</option>
+          <option value="disability">Disability</option>
+          <option value="training">Training</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+          <div class=" mb-4">
+            <label class="block mb-2 items-center" for="leaveFromDate">Leave From Date:</label>
+            <input class="w-full border border-gray-300 px-3 py-2 rounded" type="date" id="leaveFromDate" name="leaveFromDate" required onchange="calculateTotalDays();">
+          </div>
+          
+          <div class="mb-4">
+            <label class="block mb-2 items-center" for="leaveToDate">Leave To Date:</label>
+            <input class="w-full border border-gray-300 px-3 py-2 rounded date" type="date" id="leaveToDate" name="leaveToDate" required onchange="calculateTotalDays();";">
+          </div>
+          
+          <div class="mb-4">
+            <label class="block mb-2 items-center" for="totalDays">Total Days:</label>
+            <input class="w-full border border-gray-300 px-3 py-2 rounded" type="number" id="totalDays" name="totalDays" required >
+          </div>
+        </div>
+          
+          <div class="mb-4">
+            <label class="block mb-2" for="comments">Comments:</label>
+            <textarea class="w-full border border-gray-300 px-3 py-2 rounded" id="comments" name="comments" rows="4"></textarea>
+          </div>
+      <div class="flex justify-center">
+        <div class="flex flex-col items-center mr-6">
+            <h3 class="text-gray-600">Total Casual Leave</h3>
+            <span id="total-leave" class="text-2xl font-bold">15</span>
+        </div>
+        <div class="flex flex-col items-center mr-6">
+            <h3 class="text-gray-600">Enjoyed Leave</h3>
+            <input type="number" id="enjoyed-leave" class="text-2xl font-bold w-16"
+            min="0" onchange="calculateRemainingLeave()">
+        </div>
+        <div class="flex flex-col items-center">
+            <h3 class="text-gray-600">Remaining Casual Leave</h3>
+            <span id="remaining-leave" class="text-2xl font-bold"></span>
+        </div>
+    </div>
+
+    <div class="flex justify-center">
+      <div class="flex flex-col items-center mr-6">
+          <h3 class="text-gray-600">Total Sick Leave</h3>
+          <span id="total-sick-leave" class="text-2xl font-bold">14</span>
+      </div>
+      <div class="flex flex-col items-center mr-6">
+          <h3 class="text-gray-600">Enjoyed Leave</h3>
+          <input type="number" id="enjoyed-sick-leave" class="text-2xl font-bold w-16 " min="0" onchange="calculateRemainingSickLeave()">
+      </div>
+      <div class="flex flex-col items-center">
+          <h3 class="text-gray-600">Remaining Sick Leave</h3>
+          <span id="remaining-sick-leave" class="text-2xl font-bold"></span>
+      </div>
+  </div>
+          <div class="mb-4">
+            <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" value="Submit">
+          </div>
+          
+        <!-- <form class="max-w-md mx-auto">
+            <!-- Previous form fields omitted for brevity -->
+            
+            
+          </form>
+  <script src="calculation.js"></script>
+    <script src="fetch.js"></script>
+  </body>
