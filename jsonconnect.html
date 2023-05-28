@@ -1,45 +1,24 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Leave Information</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="flex justify-center">
-        <div class="flex flex-col items-center mr-6">
-            <h3 class="text-gray-600">Total Leave</h3>
-            <span id="total-leave" class="text-2xl font-bold">10</span>
-        </div>
-        <div class="flex flex-col items-center mr-6">
-            <h3 class="text-gray-600">Enjoyed Leave</h3>
-            <input type="number" id="enjoyed-leave" class="text-2xl font-bold w-16" min="0" onchange="calculateRemainingLeave()">
-        </div>
-        <div class="flex flex-col items-center">
-            <h3 class="text-gray-600">Remaining Leave</h3>
-            <span id="remaining-leave" class="text-2xl font-bold"></span>
-        </div>
-    </div>
-
-    <script>
-        function calculateRemainingLeave() {
-            // Get the input and span elements
-            const enjoyedLeaveInput = document.getElementById('enjoyed-leave');
-            const remainingLeaveSpan = document.getElementById('remaining-leave');
-            const totalLeaveSpan = document.getElementById('total-leave');
-
-            // Get the values of enjoyed leave and total leave
-            const enjoyedLeave = parseInt(enjoyedLeaveInput.value);
-            const totalLeave = parseInt(totalLeaveSpan.textContent);
-
-            // Calculate the remaining leave
-            let remainingLeave = totalLeave - enjoyedLeave;
-
-            // Ensure remainingLeave is non-negative
-            remainingLeave = Math.max(remainingLeave, 0);
-
-            // Update the remaining leave span with the calculated value
-            remainingLeaveSpan.textContent = remainingLeave;
-        }
-    </script>
-</body>
-</html>
+ <html>
+     <head>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+         <script>
+             function generatePDF() {
+                 var pdf = new jsPDF({
+                     orientation: 'p',
+                     unit: 'mm',
+                     format: 'a5',
+                     putOnlyUsedFonts:true
+                     });
+                 pdf.text("Generate a PDF with JavaScript", 20, 20);
+                 pdf.text("published on APITemplate.io", 20, 30);
+                 pdf.addPage();
+                 pdf.text(20, 20, 'The second page');
+                 pdf.save('jsPDF_2Pages.pdf');
+             }
+         </script>
+     </head>
+     <body>
+         <button onclick="generatePDF()">Generate PDF using jsPDF</button>
+     </body>
+ </html>

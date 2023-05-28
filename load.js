@@ -9,6 +9,7 @@ function calculateTotalDays() {
       const oneDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
       const totalDays = Math.round((leaveToDate - leaveFromDate) / oneDay) + 1;
       document.getElementById("totalDays").value = totalDays;
+      
     }
   }
 
@@ -33,3 +34,17 @@ function calculateTotalDays() {
           remainingLeaveSpan.textContent = remainingLeave;
       }
   };
+
+  function formatDate() {
+    var today = new Date();
+    var day = today.getDate();
+    var month = today.getMonth() + 1; // Months are zero-based, so we add 1
+    var year = today.getFullYear();
+    
+    // Pad the day and month with leading zeros if necessary
+    day = day < 10 ? '0' + day : day;
+    month = month < 10 ? '0' + month : month;
+    
+    var formattedDate = day + '/' + month + '/' + year;
+    document.getElementById('formatted-date').textContent = formattedDate;
+  }
