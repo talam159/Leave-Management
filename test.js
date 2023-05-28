@@ -1,40 +1,25 @@
-const idNumberInput = document.getElementById('idNumber');
-const firstNameInput = document.getElementById('firstName');
-const lastNameInput = document.getElementById('lastName');
-const emailInput = document.getElementById('email');
+function convertDateFormat(dateString) {
+  var parts = dateString.split("-");
+  var year = parts[0];
+  var month = parseInt(parts[1], 10);
+  var day = parseInt(parts[2], 10);
 
-idNumberInput.addEventListener('input', autofillInformation);
+  // Define an array of month names
+  var monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
 
-function autofillInformation() {
-  const idNumber = idNumberInput.value.trim();
-  
-  // Check if the ID number has the required length
-  if (idNumber.length === 9) {
-    // Make an AJAX request to fetch data from the JSON file
-    fetch('data.json')
-      .then(response => response.json())
-      .then(data => {
-        const user = data.find(user => user.idNumber === idNumber);
-        if (user) {
-          firstNameInput.value = user.firstName;
-          lastNameInput.value = user.lastName;
-          emailInput.value = user.email;
-        } else {
-          clearInputFields();
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  } else {
-    clearInputFields();
-  }
+  // Create a Date object with the provided year, month (minus 1 since it's zero-based), and day
+  var date = new Date(year, month - 1, day);
+
+  // Get the month name from the monthNames array
+  var monthName = monthNames[date.getMonth()];
+
+  // Concatenate the day, month name, and year
+  var formattedDate = day + " " + monthName + " " + year;
+  return formattedDate;
 }
 
-function clearInputFields() {
-  firstNameInput.value = '';
-  lastNameInput.value = '';
-  emailInput.value = '';
-}
 
-idNumberInput.addEventListener('input', clearInputFields);
+    

@@ -73,8 +73,9 @@ function autofillInformation() {
 
         
             const reasonContainer = document.getElementById('reasonContainer');
-            const sickLeaveRadio = document.querySelector('input[value="sick"]');
-            const casualLeaveRadio = document.querySelector('input[value="casual"]');
+            const sickLeaveRadio = document.querySelector('input[value="Sick"]');
+            const casualLeaveRadio = document.querySelector('input[value="Casual"]');
+            const reason = document.getElementById('reason');
             if (!casualLeaveRadio.checked && !sickLeaveRadio.checked) {
                 reasonContainer.style.display = 'none';
             }
@@ -85,7 +86,9 @@ function autofillInformation() {
               }
             // Show/hide the reason menu based on the selected leave type
             if (sickLeaveRadio.checked) {
-              reasonContainer.style.display = 'none';
+              // reasonContainer.style.display = 'none';
+              // reason.value='';
+
             } else {
               reasonContainer.style.display = 'block';
             }

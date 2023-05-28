@@ -60,10 +60,10 @@
       <div class="mb-4">
         <label class="block mb-2">Leave Type:</label>
         <div>
-          <input type="radio" id="sickLeave" name="leaveType" value="sick" onchange="toggleReasonMenu()" required>
+          <input type="radio" id="sickLeave" name="leaveType" value="Sick" onchange="toggleReasonMenu()" required>
           <label for="sickLeave">Sick</label>
 
-          <input type="radio" id="casualLeave" name="leaveType" value="casual" onchange="toggleReasonMenu()" required>
+          <input type="radio" id="casualLeave" name="leaveType" value="Casual" onchange="toggleReasonMenu()" required>
           <label class="mr-4" for="casualLeave">Casual</label>
         </div>
       </div>
@@ -72,11 +72,18 @@
         <label class="block mb-2" for="reason">Reason for Leave:</label>
         <select class="w-full border border-gray-300 px-3 py-2 rounded" id="reason" name="reason">
           <option value="" disabled selected>Select a reason</option>
-          <option value="personal">Personal</option>
-          <option value="disability">Disability</option>
-          <option value="training">Training</option>
+          <option value="Personal">Personal</option>
+          <option value="Disability">Disability</option>
+          <option value="Training">Training</option>
           </select>
         </div>
+
+        <div class="mb-4">
+          <label class="block mb-2" for="comments">Comments:</label>
+          <textarea class="w-full border border-gray-300 px-3 py-2 rounded" id="comments" name="comments" rows="4"></textarea>
+        </div>
+
+        
         <div class="grid grid-cols-3 gap-4">
           <div class=" mb-4">
             <label class="block mb-2 items-center" for="leaveFromDate">Leave From Date:</label>
@@ -94,10 +101,7 @@
           </div>
         </div>
           
-          <div class="mb-4">
-            <label class="block mb-2" for="comments">Comments:</label>
-            <textarea class="w-full border border-gray-300 px-3 py-2 rounded" id="comments" name="comments" rows="4"></textarea>
-          </div>
+          
       <div class="flex justify-between">
         <div class="flex flex-col items-center mr-6">
             <h2 class="text-gray-600 ">Total Casual Leave</h2>
